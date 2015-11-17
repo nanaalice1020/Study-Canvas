@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Design your weiTshirt~</title>
+        <link rel="stylesheet" type="text/css" href="canvas.css">
+        <script src="canvas.js" type="text/javascript"></script>
+    </head>
+    <body>
+    	<canvas id="tShirtDraw" width="600" height="200">Sorry!You have no canvas API support...</canvas>
+    	<form>
+    		<p>
+    			<label for="backgroundColor">Select background color:</label>
+    			<select id="backgroundColor">
+    				<option value="black" selected="selected">Black</option>
+    				<option value="yellow">Yellow</option>
+    				<option value="white">White</option>
+    				<option value="green">Green</option>
+    			</select>
+    		</p>
+    		<p>
+    			<label for="shape">Select the shape of image:</label>
+    			<select id="shape">
+    				<option value="none" selected="selected">None</option>
+    				<option value="squares">Squares</option>
+    				<option value="circles">Circles</option>
+    			</select>
+    		</p>
+    		<p>
+    			<label for="textColor">Select the color of text:</label>
+    			<select id="textColor">
+    				<option value="black" selected="selected">Black</option>
+    				<option value="white">White</option>
+    			</select>
+    		</p>
+    		<p>
+    			<label for="weibo">Select one weibo for your weiTshirt:</label>
+    			<select id="weibo">
+    				<option value="It's cool~I can design my T-shirt!" selected="selected">It's cool~I can design my T-shirt!</option>
+    				<option value="OH~I can't access to Weibo API ...So sad...">OH~I can't access to Weibo API ...So sad...</option>
+    			</select>
+    		</p>
+    		<p>
+    			<input type="button" id="previewButton" value="Preview">
+    		</p>
+    	</form>
+    </body>
+</html>
