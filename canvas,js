@@ -1,0 +1,99 @@
+/* 
+* @Author: nana
+* @Date:   2015-11-15 21:20:21
+* @Last Modified by:   nana
+* @Last Modified time: 2015-11-16 14:56:00
+*/
+
+window.onload = function(){
+	var previewButton = document.getElementById("previewButton");
+	previewButton.onclick = previewHandler;
+	makeImage();
+}
+
+function makeImage(){
+	var canvas = document.getElementById("tShirtDraw");
+	canvas.onclick=function(){
+		window.location = canvas.toDataURL("http//localhost/imag/png");
+	}
+}
+
+function previewHandler() {
+	var canvas = document.getElementById("tShirtDraw");
+	var context = canvas.getContext("2d");
+	fillBackground(canvas,context);
+	drawPic(canvas,context);
+	drawText(canvas,context);
+	drawLogo(canvas,context);
+}
+
+function drawLogo (canvas,context) {
+	var twLogo = new Image();
+	twLogo.src ="twitterBird.png";
+
+	twLogo.onload = function(){
+		context.drawImage(twLogo,20,120,70,70);
+	}
+}
+
+function drawText (canvas,context) {
+	var selectObj = document.getElementById("textColor");
+	var index = selectObj.selectedIndex;
+	var color = selectObj[index].value;
+	context.fillStyle = color;
+	context.font = "bold 1em sans-serif";
+	context.textAlign = "left";
+	context.fillText("I saw the Weibo:",20,40);
+
+	selectObj = document.getElementById("weibo");
+	index = selectObj.selectedIndex;
+	weibo = selectObj[index].value;
+	context.font = "italic 1.2em serif";
+	context.textAlign = "left";
+	context.fillText(weibo,30,100);
+
+	context.font ="bold 1em sans-serif";
+	context.textAlign = "right";
+	context.fillText("and I made this T-shirt~",canvas.width-20,canvas.height-40);
+}
+function drawPic(canvas,context) {
+	var selectObj = document.getElementById("shape");
+	var index = selectObj.selectedIndex;
+	var shape = selectObj[index].value;
+    
+	if (shape == "squares") {
+		for (var i = 0; i < 20; i++) {
+			darwSquare(canvas,context);
+		}
+	}else if(shape == "circles"){
+		for (var i = 0; i < 20; i++) {
+			darwCircle(canvas,context);
+		}
+	};
+}
+function darwSquare(canvas,context) {
+	var w = Math.floor(Math.random()*30);
+	var x = Math.floor(Math.random()*(canvas.width));
+	var y = Math.floor(Math.random()*(canvas.height));
+
+	context.fillStyle = "#FFAEB9";
+	context.fillRect(x,y,w,w);
+}
+function darwCircle (canvas,context) {
+	var r = Math.floor(Math.random()*30);
+	var x = Math.floor(Math.random()*(canvas.width));
+	var y = Math.floor(Math.random()*(canvas.height));
+
+	context.beginPath();
+	context.arc(x,y,r,0,2*Math.PI,true);
+	context.fillStyle = "#FFAEB9";
+	context.fill();
+}
+function fillBackground (canvas,context) {
+	var selectObj = document.getElementById("backgroundColor");
+	var index = selectObj.selectedIndex;
+	var color = selectObj[index].value;
+
+	context.fillStyle = color;
+	context.fillRect(0,0,canvas.width,canvas.height);
+}
